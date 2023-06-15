@@ -157,11 +157,14 @@
                 data: { cardNumber: cardNumber },
                 success: function (response) {
                     console.log(response);
+                    //if valido 
                     window.location.href = '/Acceso/Pin'
+
+                    // else
+                    // alert('La tarjeta esta bloqueada o no existe');
                 },
                 error: function (error) {
                     console.error(error);
-                    alert('La tarjeta esta bloqueada o no existe');
                 }
             });
         }

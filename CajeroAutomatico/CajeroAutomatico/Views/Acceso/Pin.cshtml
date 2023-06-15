@@ -83,6 +83,11 @@
                 padding: 5px 10px;
                 font-size: 16px;
             }
+
+        .disabled {
+            pointer-events: none;
+            opacity: 0.5;
+        }
     </style>
 </head>
 <body>
@@ -136,6 +141,8 @@
             $('#exitButton').click(function () {
                 goBack();
             });
+
+            updateAcceptButton();
         });
 
         function appendNumber(number) {
@@ -145,33 +152,55 @@
             if (newValue.length <= 4) {
                 inputField.val(newValue);
             }
+
+            updateAcceptButton();
         }
 
         function clearInput() {
             var inputField = $('#inputField');
             inputField.val('');
+
+            updateAcceptButton();
         }
 
         function submitInput() {
             var cardNumber = $('#inputField').val().replace(/-/g, '');
 
             $.ajax({
-                url: '/Acceso/ValidarTarjeta',
+                url: '/Acceso/ValidarPin',
                 method: 'GET',
                 data: { cardNumber: cardNumber },
                 success: function (response) {
                     console.log(response);
-                    window.location.href = '/Acceso/Pin'
+                    // if contraseña valida
+                    window.location.href = '/Operacion/Index'
+
+                    // else if reintento < 4
+                    // cartel aviso reintento
+
+                    // else 
+                    //window.location.href = '/Acceso/Bloqueo'
                 },
                 error: function (error) {
                     console.error(error);
-                    alert('La tarjeta esta bloqueada o no existe');
                 }
             });
         }
 
         function goBack() {
             window.history.back();
+        }
+
+        function updateAcceptButton() {
+            var inputField = $('#inputField');
+            var cardNumber = inputField.val().replace(/-/g, '');
+            var acceptButton = $('.accept-button');
+
+            if (cardNumber.length === 4) {
+                acceptButton.removeClass('disabled');
+            } else {
+                acceptButton.addClass('disabled');
+            }
         }
     </script>
 </body>

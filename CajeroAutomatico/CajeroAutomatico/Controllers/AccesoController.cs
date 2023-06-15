@@ -17,6 +17,10 @@ namespace CajeroAutomatico.Controllers
         {
             return View();
         }
+        public ActionResult Bloqueo()
+        {
+            return View();
+        }
 
         public ActionResult ValidarTarjeta(string cardNumber)
         {
@@ -25,6 +29,18 @@ namespace CajeroAutomatico.Controllers
                 return Content("1");
             }
             catch (Exception ex) 
+            {
+                return Content("ocurrio un error: " + ex.Message);
+            }
+        }
+
+        public ActionResult ValidarPin(string pin)
+        {
+            try
+            {
+                return Content("1");
+            }
+            catch (Exception ex)
             {
                 return Content("ocurrio un error: " + ex.Message);
             }
