@@ -1,0 +1,12 @@
+﻿.message-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.message {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}

@@ -1,0 +1,72 @@
+﻿body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.keypad {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.input-container {
+    width: 194px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+    .input-container input {
+        width: 100%;
+        padding: 8px;
+        font-size: 16px;
+        text-align: center;
+    }
+
+.keypad-row {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.keypad-button {
+    display: inline-block;
+    width: 60px;
+    height: 40px;
+    margin-right: 5px;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+}
+
+    .keypad-button:last-child {
+        margin-right: 0;
+    }
+
+.clear-button {
+    margin-left: 5px;
+}
+
+.accept-button {
+    margin-right: 5px;
+}
+
+.instructions {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 10px;
+    max-width: 194px;
+    word-wrap: break-word;
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
