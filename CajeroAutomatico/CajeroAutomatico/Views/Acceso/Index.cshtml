@@ -1,0 +1,189 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cajero Automático</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .keypad {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        .input-container {
+            width: 194px;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+            .input-container input {
+                width: 100%;
+                padding: 8px;
+                font-size: 16px;
+                text-align: center;
+            }
+
+        .keypad-row {
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .keypad-button {
+            display: inline-block;
+            width: 60px;
+            height: 40px;
+            margin-right: 5px;
+            text-align: center;
+            line-height: 40px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+        }
+
+            .keypad-button:last-child {
+                margin-right: 0;
+            }
+
+        .clear-button {
+            margin-left: 5px;
+        }
+
+        .accept-button {
+            margin-right: 5px;
+        }
+
+        .instructions {
+            text-align: center;
+            font-size: 18px;
+            margin-bottom: 10px;
+            max-width: 194px;
+            word-wrap: break-word;
+        }
+        .disabled {
+            pointer-events: none;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="keypad">
+        <br>
+        <div class="instructions">Ingrese los 16 números de su tarjeta</div>
+        <br>
+        <div class="input-container">
+            <input type="text" id="inputField" maxlength="19" readonly />
+        </div>
+        <div class="keypad-row">
+            <div class="keypad-button" data-number="1">1</div>
+            <div class="keypad-button" data-number="2">2</div>
+            <div class="keypad-button" data-number="3">3</div>
+        </div>
+        <div class="keypad-row">
+            <div class="keypad-button" data-number="4">4</div>
+            <div class="keypad-button" data-number="5">5</div>
+            <div class="keypad-button" data-number="6">6</div>
+        </div>
+        <div class="keypad-row">
+            <div class="keypad-button" data-number="7">7</div>
+            <div class="keypad-button" data-number="8">8</div>
+            <div class="keypad-button" data-number="9">9</div>
+        </div>
+        <div class="keypad-row">
+            <div class="keypad-button clear-button">Limpiar</div>
+            <div class="keypad-button" data-number="0">0</div>
+            <div class="keypad-button accept-button">Aceptar</div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('.keypad-button').click(function () {
+                var number = $(this).data('number');
+                appendNumber(number);
+            });
+
+            $('.clear-button').click(function () {
+                clearInput();
+            });
+
+            $('.accept-button').click(function () {
+                submitInput();
+            });
+
+            updateAcceptButton();
+        });
+
+        function appendNumber(number) {
+            var inputField = $('#inputField');
+            var currentValue = inputField.val();
+            var newValue = currentValue + number;
+            if (newValue.length <= 19) {
+                newValue = formatCardNumber(newValue);
+                inputField.val(newValue);
+            }
+
+            updateAcceptButton();
+        }
+
+        function clearInput() {
+            var inputField = $('#inputField');
+            inputField.val('');
+
+            updateAcceptButton();
+        }
+
+        function submitInput() {
+            var cardNumber = $('#inputField').val().replace(/-/g, '');
+
+            $.ajax({
+                url: '/Acceso/ValidarTarjeta',
+                method: 'GET',
+                data: { cardNumber: cardNumber },
+                success: function (response) {
+                    console.log(response);
+                    window.location.href = '/Acceso/Pin'
+                },
+                error: function (error) {
+                    console.error(error);
+                    alert('La tarjeta esta bloqueada o no existe');
+                }
+            });
+        }
+
+        function formatCardNumber(cardNumber) {
+            var formattedNumber = cardNumber.replace(/\D/g, ''); // Eliminar caracteres no numéricos
+            var regex = /(\d{4})(?=\d)/g; // Expresión regular para separar en grupos de 4 dígitos
+            formattedNumber = formattedNumber.replace(regex, '$1-');
+            return formattedNumber;
+        }
+
+        function updateAcceptButton() {
+            var inputField = $('#inputField');
+            var cardNumber = inputField.val().replace(/-/g, '');
+            var acceptButton = $('.accept-button');
+
+            if (cardNumber.length === 16) {
+                acceptButton.removeClass('disabled');
+            } else {
+                acceptButton.addClass('disabled');
+            }
+        }
+    </script>
+</body>
+</html>
