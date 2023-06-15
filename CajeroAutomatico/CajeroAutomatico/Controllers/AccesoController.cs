@@ -24,9 +24,21 @@ namespace CajeroAutomatico.Controllers
 
         public ActionResult ValidarTarjeta(string cardNumber)
         {
+            bool validacion = false;
             try
             {
-                return Content("1");
+                if (cardNumber == "1111111111111111") // hacer funcion validacion
+                {
+                    validacion = true;
+                }
+
+                var data = new
+                {
+                    validacion = validacion,
+                    reintentos = 0
+                };
+
+                return Json(data, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex) 
             {
@@ -36,9 +48,26 @@ namespace CajeroAutomatico.Controllers
 
         public ActionResult ValidarPin(string pin)
         {
+            bool validacion = false;
+            int reintentos = 0;
             try
             {
-                return Content("1");
+                if (pin == "1111")
+                {
+                    validacion = true;
+                }
+                else
+                {
+                    reintentos++; //= validacionReintentos();
+                }
+
+                var data = new
+                {
+                    validacion = validacion,
+                    reintentos = reintentos
+                };
+
+                return Json(data, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
             {

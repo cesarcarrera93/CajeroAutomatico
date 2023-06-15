@@ -41,13 +41,13 @@ function submitInput() {
         url: '/Acceso/ValidarTarjeta',
         method: 'GET',
         data: { cardNumber: cardNumber },
-        success: function (response) {
-            console.log(response);
-            //if valido 
-            window.location.href = '/Acceso/Pin'
+        success: function (data) {
+            console.log(data);
 
-            // else
-            // alert('La tarjeta esta bloqueada o no existe');
+            if (data.validacion == "1")
+                window.location.href = '/Acceso/Pin'
+            else
+                alert('La tarjeta esta bloqueada o no existe');
         },
         error: function (error) {
             console.error(error);

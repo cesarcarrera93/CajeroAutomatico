@@ -38,22 +38,21 @@ function clearInput() {
 }
 
 function submitInput() {
-    var cardNumber = $('#inputField').val().replace(/-/g, '');
+    var pin = $('#inputField').val().replace(/-/g, '');
 
     $.ajax({
         url: '/Acceso/ValidarPin',
         method: 'GET',
-        data: { cardNumber: cardNumber },
-        success: function (response) {
-            console.log(response);
-            // if contraseña valida
-            window.location.href = '/Operacion/Index'
+        data: { pin: pin },
+        success: function (data) {
+            console.log(data);
 
-            // else if reintento < 4
-            // cartel aviso reintento
-
-            // else 
-            //window.location.href = '/Acceso/Bloqueo'
+            if (data.validacion == "1")
+                window.location.href = '/Operacion/Index'
+            else if (data.reintentos < 4)
+                alert('PIN INCORRECTO. Reintentos restantes: ' + (4 - data.reintentos));
+            else
+                window.location.href = '/Acceso/Bloqueo'
         },
         error: function (error) {
             console.error(error);
