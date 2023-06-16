@@ -16,6 +16,7 @@
         goBack();
     });
 
+    verificarSession();
     updateAcceptButton();
 });
 
@@ -39,20 +40,23 @@ function clearInput() {
 
 function submitInput() {
     var pin = $('#inputField').val().replace(/-/g, '');
+    var numeroTarjetaGuardado = sessionStorage.getItem('cardNumber');
 
     $.ajax({
         url: '/Acceso/ValidarPin',
         method: 'GET',
-        data: { pin: pin },
+        data: { pin: pin, cardNumber: numeroTarjetaGuardado },
         success: function (data) {
             console.log(data);
 
             if (data.validacion == "1")
                 window.location.href = '/Operacion/Index'
-            else if (data.reintentos < 4)
-                alert('PIN INCORRECTO. Reintentos restantes: ' + (4 - data.reintentos));
-            else
+            else if (data.bloqueo) {
+                removeSession()
                 window.location.href = '/Acceso/Bloqueo'
+            }
+            else 
+                alert('PIN INCORRECTO. Reintentos restantes: ' + (4 - data.reintentos));
         },
         error: function (error) {
             console.error(error);
@@ -61,6 +65,7 @@ function submitInput() {
 }
 
 function goBack() {
+    removeSession()
     window.history.back();
 }
 
@@ -73,5 +78,15 @@ function updateAcceptButton() {
         acceptButton.removeClass('disabled');
     } else {
         acceptButton.addClass('disabled');
+    }
+}
+
+function removeSession(){
+    sessionStorage.removeItem('cardNumber');
+}
+
+function verificarSession() {
+    if (sessionStorage.getItem('cardNumber') == null) {
+        window.location.href = '/Acceso/Index'
     }
 }

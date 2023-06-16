@@ -72,7 +72,6 @@ C:\Repositorio\CajeroAutomatico\CajeroAutomatico\CajeroAutomatico\bin\System.Web
 C:\Repositorio\CajeroAutomatico\CajeroAutomatico\CajeroAutomatico\bin\Newtonsoft.Json.xml
 C:\Repositorio\CajeroAutomatico\CajeroAutomatico\CajeroAutomatico\bin\Antlr3.Runtime.pdb
 C:\Repositorio\CajeroAutomatico\CajeroAutomatico\CajeroAutomatico\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Repositorio\CajeroAutomatico\CajeroAutomatico\CajeroAutomatico\obj\Debug\CajeroAutomatico.csproj.AssemblyReference.cache
 C:\Repositorio\CajeroAutomatico\CajeroAutomatico\CajeroAutomatico\obj\Debug\CajeroAutomatico.csproj.CoreCompileInputs.cache
 C:\Repositorio\CajeroAutomatico\CajeroAutomatico\CajeroAutomatico\obj\Debug\CajeroAutomatico.csproj.CopyComplete
 C:\Repositorio\CajeroAutomatico\CajeroAutomatico\CajeroAutomatico\obj\Debug\CajeroAutomatico.dll

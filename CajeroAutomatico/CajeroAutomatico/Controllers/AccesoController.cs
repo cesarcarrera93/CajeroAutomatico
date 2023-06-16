@@ -27,7 +27,7 @@ namespace CajeroAutomatico.Controllers
             bool validacion = false;
             try
             {
-                if (cardNumber == "1111111111111111") // hacer funcion validacion
+                if (tarjetaEsValida(cardNumber))
                 {
                     validacion = true;
                 }
@@ -46,25 +46,31 @@ namespace CajeroAutomatico.Controllers
             }
         }
 
-        public ActionResult ValidarPin(string pin)
+        public ActionResult ValidarPin(string pin, string cardNumber)
         {
             bool validacion = false;
             int reintentos = 0;
+            bool bloqueo = false;
             try
             {
-                if (pin == "1111")
+                if (pinEsValido(pin, cardNumber))
                 {
                     validacion = true;
                 }
                 else
                 {
-                    reintentos++; //= validacionReintentos();
+                    reintentos= validacionReintentos(pin, cardNumber);
+                    if (reintentos >= 4)
+                    {
+                        bloqueo = true;
+                    }
                 }
 
                 var data = new
                 {
                     validacion = validacion,
-                    reintentos = reintentos
+                    reintentos = reintentos,
+                    bloqueo = bloqueo
                 };
 
                 return Json(data, JsonRequestBehavior.AllowGet);
@@ -73,6 +79,27 @@ namespace CajeroAutomatico.Controllers
             {
                 return Content("ocurrio un error: " + ex.Message);
             }
+        }
+
+        private bool tarjetaEsValida(string cardNumber)
+        {
+            if (cardNumber == "1111111111111111")
+                return true;
+
+            return false;
+        }
+
+        private bool pinEsValido(string pin, string cardNumber)
+        {
+            if (pin == "1111")
+                return true;
+
+            return false;
+        }
+
+        private int validacionReintentos(string pin, string cardNumber)
+        {
+            return 1;
         }
     }
 }

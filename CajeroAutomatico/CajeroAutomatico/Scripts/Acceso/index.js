@@ -12,6 +12,7 @@
         submitInput();
     });
 
+    sessionStorage.removeItem('cardNumber');
     updateAcceptButton();
 });
 
@@ -45,7 +46,10 @@ function submitInput() {
             console.log(data);
 
             if (data.validacion == "1")
+            {
+                sessionStorage.setItem('cardNumber', cardNumber);
                 window.location.href = '/Acceso/Pin'
+            }
             else
                 alert('La tarjeta esta bloqueada o no existe');
         },

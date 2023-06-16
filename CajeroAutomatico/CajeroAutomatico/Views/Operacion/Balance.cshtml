@@ -1,0 +1,106 @@
+﻿
+@{
+    ViewBag.Title = "Balance";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vista de datos</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .data-container {
+            text-align: center;
+        }
+
+        .data-label {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .data-value {
+            margin-bottom: 20px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .button {
+            margin: 0 10px;
+        }
+        .money::before {
+            content: "$ ";
+        }
+    </style>
+</head>
+<body>
+    <div class="data-container">
+        <div class="data-label">Número de Tarjeta:</div>
+        <div class="data-value" id="numeroTarjeta"></div>
+
+        <div class="data-label">Fecha de Vencimiento:</div>
+        <div class="data-value" id="fechaVencimiento"></div>
+
+        <div class="data-label">Saldo:</div>
+        <div class="money" id="saldo"></div>
+
+        <div class="button-container">
+            <button class="button" onclick="goBack()">Atrás</button>
+            <button class="button" onclick="salir()">Salir</button>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    
+    <script>
+
+        $(document).ready(function () {
+            // Obtener los datos desde el controlador y mostrarlos en la vista
+            obtenerDatos();
+        });
+
+        function obtenerDatos() {
+            var numeroTarjetaGuardado = sessionStorage.getItem('cardNumber');
+
+            $.ajax({
+                url: '/Operacion/TraerBalance',
+                method: 'POST',
+                data: { cardNumber: numeroTarjetaGuardado },
+                success: function (response) {
+                    // Asignar los valores a los elementos de la vista
+                    $('#numeroTarjeta').text(numeroTarjetaGuardado);
+                    $('#fechaVencimiento').text(moment(response.FechaVencimiento).format("DD/MM/YYYY"));
+                    $('#saldo').text(response.Saldo);
+                },
+                error: function (error) {
+                    console.error(error);
+                }
+            });
+        }
+
+        function goBack() {
+            window.history.back();
+        }
+
+        function salir() {
+            window.location.href = '/Acceso/Index';
+        }
+    </script>
+
+    @*<script src="~/Scripts/Operacion/balance.js"></script>*@
+</body>
+</html>
+
+

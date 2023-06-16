@@ -1,7 +1,21 @@
 ﻿
 @{
     ViewBag.Title = "Index";
+    Layout = null;
 }
-
-<h2>Index</h2>
-
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Botones en el centro</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="~/Content/Operacion/index.css">
+</head>
+<body>
+    <div class="button-container">
+        <button class="button" id="balanceButton">Balance</button>
+        <button class="button" id="retiroButton">Retiro</button>
+        <button class="button" id="salirButton">Salir</button>
+    </div>
+    <script src="~/Scripts/Operacion/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+﻿body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 200px; /* Ancho total deseado para los botones */
+}
+
+.button {
+    width: 100%; /* Ancho total de los botones */
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    font-size: 18px;
+}
