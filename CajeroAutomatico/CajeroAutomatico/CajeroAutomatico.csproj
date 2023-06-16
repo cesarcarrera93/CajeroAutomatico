@@ -137,7 +137,9 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Operacion\balance.css" />
     <Content Include="Content\Operacion\index.css" />
+    <Content Include="Content\Operacion\retiro.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -159,6 +161,7 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\Operacion\balance.js" />
     <Content Include="Scripts\Operacion\index.js" />
+    <Content Include="Scripts\Operacion\reporteOperacion.js" />
     <Content Include="Scripts\Operacion\retiro.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -180,6 +183,9 @@
     <Content Include="Views\Acceso\Bloqueo.cshtml" />
     <Content Include="Views\Operacion\Balance.cshtml" />
     <Content Include="Views\Operacion\Retiro.cshtml" />
+    <Content Include="Views\Shared\_TecladoNumerico.cshtml" />
+    <Content Include="Views\Operacion\ReporteOperacion.cshtml" />
+    <Content Include="Views\Operacion\Error.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -7,6 +7,7 @@
 <head>
     <title>Cajero Automático</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="~/Scripts/Acceso/pin.js"></script>
     <link rel="stylesheet" href="~/Content/Acceso/pin.css">
 </head>
 <body>
@@ -17,31 +18,12 @@
         <div class="input-container">
             <input type="password" id="inputField" maxlength="4" readonly />
         </div>
-        <div class="keypad-row">
-            <div class="keypad-button" data-number="1">1</div>
-            <div class="keypad-button" data-number="2">2</div>
-            <div class="keypad-button" data-number="3">3</div>
-        </div>
-        <div class="keypad-row">
-            <div class="keypad-button" data-number="4">4</div>
-            <div class="keypad-button" data-number="5">5</div>
-            <div class="keypad-button" data-number="6">6</div>
-        </div>
-        <div class="keypad-row">
-            <div class="keypad-button" data-number="7">7</div>
-            <div class="keypad-button" data-number="8">8</div>
-            <div class="keypad-button" data-number="9">9</div>
-        </div>
-        <div class="keypad-row">
-            <div class="keypad-button clear-button">Limpiar</div>
-            <div class="keypad-button" data-number="0">0</div>
-            <div class="keypad-button accept-button">Aceptar</div>
-        </div>
+
+        @Html.Partial("~/Views/Shared/_TecladoNumerico.cshtml")
+
         <div class="button-row">
             <button id="exitButton">Salir</button>
         </div>
     </div>
-
-    <script src="~/Scripts/Acceso/pin.js"></script>
 </body>
 </html>

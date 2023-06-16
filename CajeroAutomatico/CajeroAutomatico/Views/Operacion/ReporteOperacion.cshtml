@@ -10,20 +10,26 @@
     <link rel="stylesheet" href="~/Content/Operacion/balance.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-    <script src="~/Scripts/Operacion/balance.js"></script>
+    <script src="~/Scripts/Operacion/reporteOperacion.js"></script>
+    <script src="~/Scripts/Operacion/retiro.js"></script>
 </head>
 <body>
     <div class="data-container">
+
         <br>
-        <div class="instructions">Balance</div>
+        <div class="instructions">Reporte de la Operación</div>
         <br>
+
         <div class="data-label">Número de Tarjeta:</div>
         <div class="data-value" id="numeroTarjeta"></div>
 
-        <div class="data-label">Fecha de Vencimiento:</div>
-        <div class="data-value" id="fechaVencimiento"></div>
+        <div class="data-label">Fecha y Hora:</div>
+        <div class="data-value" id="fechareporte"></div>
 
-        <div class="data-label">Saldo:</div>
+        <div class="data-label">Cantidad Retirada:</div>
+        <div class="money" id="retiro"></div>
+
+        <div class="data-label">Balance:</div>
         <div class="money" id="saldo"></div>
 
         <div class="button-container">
@@ -33,5 +39,3 @@
     </div>
 </body>
 </html>
-
-

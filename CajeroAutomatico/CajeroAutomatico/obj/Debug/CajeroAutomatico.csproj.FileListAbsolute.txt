@@ -76,3 +76,4 @@ C:\Repositorio\CajeroAutomatico\CajeroAutomatico\CajeroAutomatico\obj\Debug\Caje
 C:\Repositorio\CajeroAutomatico\CajeroAutomatico\CajeroAutomatico\obj\Debug\CajeroAutomatico.csproj.CopyComplete
 C:\Repositorio\CajeroAutomatico\CajeroAutomatico\CajeroAutomatico\obj\Debug\CajeroAutomatico.dll
 C:\Repositorio\CajeroAutomatico\CajeroAutomatico\CajeroAutomatico\obj\Debug\CajeroAutomatico.pdb
+C:\Repositorio\CajeroAutomatico\CajeroAutomatico\CajeroAutomatico\obj\Debug\CajeroAutomatico.csproj.AssemblyReference.cache
