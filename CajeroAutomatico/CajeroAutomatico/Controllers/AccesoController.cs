@@ -59,12 +59,14 @@ namespace CajeroAutomatico.Controllers
                 if (pinEsValido(pin, cardNumber))
                 {
                     validacion = true;
+                    reiniciarReintentos(cardNumber);// se reinicia el contador de reintentos
                 }
                 else
                 {
-                    reintentos= validacionReintentos(pin, cardNumber);
+                    reintentos= validarReintentos(pin, cardNumber); // se suma un reintento fallido y valida la cantidad de reintentos
                     if (reintentos >= 4)
                     {
+                        bloquearTarjeta(cardNumber);
                         bloqueo = true;
                     }
                 }
@@ -88,12 +90,15 @@ namespace CajeroAutomatico.Controllers
         {
             try
             {
-                //Tarjeta tarjeta = new Tarjeta();
-                var tarjeta = db.Tarjetas.ToList();//(c => c.NroTarjeta == cardNumber);
+                Tarjeta tarjeta = new Tarjeta();
+                tarjeta = db.Tarjetas.FirstOrDefault(c => c.NroTarjeta == cardNumber);
                 if (tarjeta != null)
-                    return true;
-                else
-                    return false;
+                {
+                    if (!tarjeta.Bloqueo)
+                        return true;
+                }
+                
+                return false;
             }
             catch (Exception ex)
             {
@@ -103,15 +108,54 @@ namespace CajeroAutomatico.Controllers
 
         private bool pinEsValido(string pin, string cardNumber)
         {
-            if (pin == "1111")
-                return true;
-
-            return false;
+            
+            Tarjeta tarjeta = new Tarjeta();
+            
+            tarjeta = db.Tarjetas.FirstOrDefault(c => c.NroTarjeta == cardNumber);
+            
+            if (tarjeta != null)
+            {
+                if (pin == tarjeta.Pin)
+                {
+                    return true;
+                }
+            }
+                
+            return false;  
         }
 
-        private int validacionReintentos(string pin, string cardNumber)
+        private int validarReintentos(string pin, string cardNumber)
         {
-            return 1;
+            var tarjeta = db.Tarjetas.Find(cardNumber);
+            if (tarjeta != null)
+            {
+                tarjeta.Reintentos += 1;
+                db.SaveChanges();
+                return tarjeta.Reintentos;
+            }
+            return -1;
         }
+
+        private void bloquearTarjeta(string cardNumber)
+        {
+            var tarjeta = db.Tarjetas.Find(cardNumber);
+            if (tarjeta != null)
+            {
+                tarjeta.Bloqueo = true;
+                db.SaveChanges();
+            }
+            reiniciarReintentos(cardNumber);
+        }
+
+        private void reiniciarReintentos(string cardNumber)
+        {
+            var tarjeta = db.Tarjetas.Find(cardNumber);
+            if (tarjeta != null)
+            {
+                tarjeta.Reintentos = 0;
+                db.SaveChanges();
+            }
+        }
+        
     }
 }

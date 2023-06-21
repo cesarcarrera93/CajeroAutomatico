@@ -21,11 +21,11 @@ namespace CajeroAutomatico.Models
 
         public decimal MontoRetirado { get; set; }
 
-        [ForeignKey("NroTarjeta")]
-        public virtual Tarjeta Tarjeta { get; set; }
+        //[ForeignKey("NroTarjeta")]
+        //public virtual Tarjeta Tarjeta { get; set; }
 
-        [ForeignKey("IdTipoOperacion")]
-        public virtual TipoOperacion TipoOperacion { get; set; }
+        //[ForeignKey("IdTipoOperacion")]
+        //public virtual TipoOperacion TipoOperacion { get; set; }
         public Operacion()
         {
         }

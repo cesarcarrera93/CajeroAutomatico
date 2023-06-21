@@ -5,8 +5,13 @@
 }
 
 <link rel="stylesheet" href="~/Content/Acceso/bloqueo.css">
+<script src="~/Scripts/Shared.js"></script>
 
 <div class="message-container">
-    <p class="message">Su tarjeta ha sido bloqueada debido a los reiterados intentos fallidos!</p>
+    <div class="data-container">
+        <p class="message">Su tarjeta ha sido bloqueada debido a los reiterados intentos fallidos!</p>
+        <div class="button-row">
+            <button class="button" onclick="salir()">Salir</button>
+        </div>
+    </div>
 </div>
-

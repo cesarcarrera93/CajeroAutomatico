@@ -7,16 +7,16 @@
 <html>
 <head>
     <title>Vista de datos</title>
-    <link rel="stylesheet" href="~/Content/Operacion/retiro.css">
+    <link rel="stylesheet" href="~/Content/Acceso/bloqueo.css">
     <script src="~/Scripts/Shared.js"></script>
 </head>
 <body>
-    <div class="data-container">
-        <br>
-        <div class="instructions">El monto indicado excede el balance.</div>
-        <br>
-        <div class="button-container">
-            <button class="button" onclick="goBack()">Atrás</button>
+    <div class="message-container">
+        <div class="data-container">
+            <p class="message">El monto indicado excede el balance.</p>
+            <div class="button-row">
+                <button class="button" onclick="goBack()">Atrás</button>
+            </div>
         </div>
     </div>
 </body>

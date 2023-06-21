@@ -57,6 +57,7 @@ function submitInput() {
             }
             else 
                 alert('PIN INCORRECTO. Reintentos restantes: ' + (4 - data.reintentos));
+                $('#inputField').val('');
         },
         error: function (error) {
             console.error(error);

@@ -13,6 +13,7 @@ namespace CajeroAutomatico.Models
         public DateTime? FechaVencimiento { get; set; }
         public decimal? CantidadRetirada { get; set; }
         public DateTime? FechaReporte { get; set; }
+        public string codigoOperacion { get; set; }
 
         public BalanceViewModel()
         {

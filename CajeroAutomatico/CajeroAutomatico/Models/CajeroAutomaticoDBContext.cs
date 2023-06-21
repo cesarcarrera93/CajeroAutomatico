@@ -11,7 +11,7 @@ namespace CajeroAutomatico.Models
     {
         public DbSet<Tarjeta> Tarjetas { get; set; }
         public DbSet<Operacion> Operaciones { get; set; }
-        public DbSet<TipoOperacion> TiposOperacion { get; set; }
+        public DbSet<TipoOperacion> TipoOperacion { get; set; }
 
         public CajeroAutomaticoDbContext() : base("MiCajeroAutomatico")
         {
@@ -55,14 +55,14 @@ namespace CajeroAutomatico.Models
                 ToTable("Operaciones");
                 HasKey(o => o.CodigoOperacion);
                 Property(o => o.NroTarjeta).HasMaxLength(16);
-                HasRequired(o => o.Tarjeta)
-                    .WithMany(t => t.Operaciones)
-                    .HasForeignKey(o => o.NroTarjeta)
-                    .WillCascadeOnDelete(false);
-                HasRequired(o => o.TipoOperacion)
-                    .WithMany()
-                    .HasForeignKey(o => o.IdTipoOperacion)
-                    .WillCascadeOnDelete(false);
+                //HasRequired(o => o.Tarjeta)
+                //    .WithMany(t => t.Operaciones)
+                //    .HasForeignKey(o => o.NroTarjeta)
+                //    .WillCascadeOnDelete(false);
+                //HasRequired(o => o.TipoOperacion)
+                //    .WithMany()
+                //    .HasForeignKey(o => o.IdTipoOperacion)
+                //    .WillCascadeOnDelete(false);
             }
         }
 

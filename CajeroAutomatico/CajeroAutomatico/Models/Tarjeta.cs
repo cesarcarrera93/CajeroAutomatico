@@ -21,11 +21,11 @@ namespace CajeroAutomatico.Models
 
         public bool Bloqueo { get; set; }
 
-        public virtual ICollection<Operacion> Operaciones { get; set; }
+        //public virtual ICollection<Operacion> Operaciones { get; set; }
 
         public Tarjeta()
         {
-            Operaciones = new HashSet<Operacion>();
+            //Operaciones = new HashSet<Operacion>();
         }
     }
 }

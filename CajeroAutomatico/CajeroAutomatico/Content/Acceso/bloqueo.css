@@ -10,3 +10,9 @@
     font-size: 24px;
     font-weight: bold;
 }
+
+button {
+
+    display: block;
+    margin: auto;
+}

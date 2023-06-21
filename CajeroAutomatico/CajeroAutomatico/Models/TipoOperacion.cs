@@ -15,17 +15,17 @@ namespace CajeroAutomatico.Models
 
         public string Operacion { get; set; }
 
-        public virtual ICollection<Operacion> Operaciones { get; set; }
+        //public virtual ICollection<Operacion> Operaciones { get; set; }
 
         public TipoOperacion()
         {
-            Operaciones = new HashSet<Operacion>();
+            //Operaciones = new HashSet<Operacion>();
         }
 
         public TipoOperacion(string operacion)
         {
             Operacion = operacion;
-            Operaciones = new HashSet<Operacion>();
+            //Operaciones = new HashSet<Operacion>();
         }
     }
 }

@@ -68,13 +68,10 @@ function submitInput() {
         success: function (data) {
             console.log(data);
 
-            if (data.validacion == "1")
-                window.location.href = '/Operacion/ReporteOperacion'
-            else if (data.saldoInsuficiente) {
-                window.location.href = '/Operacion/Error'
-            }
+            if (data.saldoSuficiente)
+                window.location.href = '/Operacion/ReporteOperacion?idReporteOperacion=' + data.codigoOperacion
             else
-                alert('PIN INCORRECTO. Reintentos restantes: ' + (4 - data.reintentos));
+                window.location.href = '/Operacion/Error'
         },
         error: function (error) {
             console.error(error);
