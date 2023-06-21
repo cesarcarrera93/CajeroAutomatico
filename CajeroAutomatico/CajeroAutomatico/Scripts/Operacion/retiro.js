@@ -24,15 +24,6 @@
     updateAcceptButton();
 });
 
-
-function goBack() {
-    window.location.href = '/Operacion/Index'
-}
-
-function removeSession() {
-    sessionStorage.removeItem('cardNumber');
-}
-
 function verificarSession() {
     if (sessionStorage.getItem('cardNumber') == null) {
         window.location.href = '/Acceso/Index'

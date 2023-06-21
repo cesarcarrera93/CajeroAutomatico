@@ -7,10 +7,6 @@
         submitRetiro();
     });
 
-    $('#salirButton').click(function () {
-        submitSalir();
-    });
-
     verificarSession();
 });
 
@@ -20,10 +16,6 @@ function submitBalance() {
 
 function submitRetiro() {
     window.location.href = '/Operacion/Retiro'
-}
-
-function submitSalir() {
-    window.location.href = '/Acceso/Index'
 }
 
 function verificarSession() {

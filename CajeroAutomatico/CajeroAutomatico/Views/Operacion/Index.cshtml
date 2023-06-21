@@ -8,14 +8,15 @@
 <head>
     <title>Botones en el centro</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="~/Scripts/Operacion/index.js"></script>
     <link rel="stylesheet" href="~/Content/Operacion/index.css">
+    <script src="~/Scripts/Operacion/index.js"></script>
+    <script src="~/Scripts/shared.js"></script>
 </head>
 <body>
     <div class="button-container">
         <button class="button" id="balanceButton">Balance</button>
         <button class="button" id="retiroButton">Retiro</button>
-        <button class="button" id="salirButton">Salir</button>
+        <button class="button" onclick="salir()">Salir</button>
     </div>
 </body>
 </html>

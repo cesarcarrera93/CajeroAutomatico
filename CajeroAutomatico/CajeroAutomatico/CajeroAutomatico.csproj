@@ -163,6 +163,7 @@
     <Content Include="Scripts\Operacion\index.js" />
     <Content Include="Scripts\Operacion\reporteOperacion.js" />
     <Content Include="Scripts\Operacion\retiro.js" />
+    <Content Include="Scripts\shared.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

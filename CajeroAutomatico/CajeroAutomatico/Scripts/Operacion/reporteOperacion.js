@@ -20,12 +20,3 @@ function obtenerDatos() {
         }
     });
 }
-
-function goBack() {
-    window.location.href = '/Operacion/Index';
-}
-
-function salir() {
-    sessionStorage.removeItem('cardNumber');
-    window.location.href = '/Acceso/Index';
-}
