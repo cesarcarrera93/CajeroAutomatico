@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
+using CajeroAutomatico.Models;
 
 namespace CajeroAutomatico.Controllers
 {
     public class AccesoController : Controller
     {
+        private CajeroAutomaticoDbContext db = new CajeroAutomaticoDbContext();
         // GET: Acceso
         public ActionResult Index()
         {
@@ -83,10 +86,19 @@ namespace CajeroAutomatico.Controllers
 
         private bool tarjetaEsValida(string cardNumber)
         {
-            if (cardNumber == "1111111111111111")
-                return true;
-
-            return false;
+            try
+            {
+                //Tarjeta tarjeta = new Tarjeta();
+                var tarjeta = db.Tarjetas.ToList();//(c => c.NroTarjeta == cardNumber);
+                if (tarjeta != null)
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
 
         private bool pinEsValido(string pin, string cardNumber)

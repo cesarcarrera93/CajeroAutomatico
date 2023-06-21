@@ -76,4 +76,7 @@ C:\Repositorio\CajeroAutomatico\CajeroAutomatico\CajeroAutomatico\obj\Debug\Caje
 C:\Repositorio\CajeroAutomatico\CajeroAutomatico\CajeroAutomatico\obj\Debug\CajeroAutomatico.csproj.CopyComplete
 C:\Repositorio\CajeroAutomatico\CajeroAutomatico\CajeroAutomatico\obj\Debug\CajeroAutomatico.dll
 C:\Repositorio\CajeroAutomatico\CajeroAutomatico\CajeroAutomatico\obj\Debug\CajeroAutomatico.pdb
-C:\Repositorio\CajeroAutomatico\CajeroAutomatico\CajeroAutomatico\obj\Debug\CajeroAutomatico.csproj.AssemblyReference.cache
+C:\Repositorio\CajeroAutomatico\CajeroAutomatico\CajeroAutomatico\bin\EntityFramework.dll
+C:\Repositorio\CajeroAutomatico\CajeroAutomatico\CajeroAutomatico\bin\EntityFramework.SqlServer.dll
+C:\Repositorio\CajeroAutomatico\CajeroAutomatico\CajeroAutomatico\bin\EntityFramework.xml
+C:\Repositorio\CajeroAutomatico\CajeroAutomatico\CajeroAutomatico\bin\EntityFramework.SqlServer.xml
